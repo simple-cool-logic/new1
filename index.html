@@ -18,9 +18,9 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:black;
+    background:radial-gradient(circle at top,#200000,#000);
     overflow:hidden;
-    color:red;
+    color:#ffb3b3;
 }
 
 /* SCREENS */
@@ -38,14 +38,14 @@ button,.btn{
     padding:10px 24px;
     border:none;
     border-radius:20px;
-    background:#5C1A1A;
-    color:red;
+    background:linear-gradient(135deg,#b71c1c,#e53935);
+    color:white;
     cursor:pointer;
 }
 
 /* FORM */
 .form-box{
-    background:linear-gradient(135deg,#EF5350,#E53935,#B71C1C);
+    background:white;
     padding:20px;
     border-radius:12px;
     width:300px;
@@ -66,13 +66,13 @@ input{
     width:300px;
     height:200px;
     margin:auto;
-    background:linear-gradient(135deg,#EF5350,#E53935,#B71C1C);
+     background:linear-gradient(135deg,#ef5350,#e53935,#b71c1c);
     overflow:hidden;
 }
 .flap{
     position:absolute;
     inset:0;
-    background:red;
+   background:#c62828;
     clip-path:polygon(0 0,100% 0,50% 50%);
     transform-origin:top;
     transition:0.8s ease;
@@ -103,7 +103,7 @@ input{
 }
 .left{flex:1;text-align:left;}
 .item{
-    background:#5C1A1A;
+   background:rgba(183,28,28,0.7);
     padding:10px;
     margin:8px 0;
     border-radius:10px;
@@ -121,7 +121,7 @@ input{
 .envelope-final{
     width:420px;
     height:260px;
-    background:#5C1A1A;
+    background:white;
     border:2px solid #ddd;
     border-radius:8px;
     margin:auto;
@@ -177,31 +177,34 @@ input{
 <!-- SCREEN 0 : ASK TO NAME ONLY -->
 <div class="screen active" id="s0">
     <div class="form-box">
-        <h2>✉️ 𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑵𝒂𝒎𝒆</h2>
+        <h2>✉️  𝑩𝒆𝒇𝒐𝒓𝒆 𝑾𝒆 𝑩𝒆𝒈𝒊𝒏</h2>
+         <p style="font-size:14px;margin-top:6px;">𝑻𝒆𝒍𝒍 𝒎𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆 💫</p>
         <input id="toName" placeholder="To">
-        <button onclick="saveName()">𝑪𝒐𝒏𝒕𝒊𝒏𝒖𝒆</button>
+        <button onclick="saveName()">𝑪𝒐𝒏𝒕𝒊𝒏𝒖𝒆✨</button>
     </div>
 </div>
 
 <!-- SCREEN 1 -->
 <div class="screen" id="s1">
-    <h1>🎁 𝑨 𝑺𝒖𝒓𝒑𝒓𝒊𝒔𝒆 𝒇𝒐𝒓 𝒀𝒐𝒖 🎁</h1>
+    <h1>🎁𝑨 𝑺𝒎𝒂𝒍𝒍 𝑺𝒖𝒓𝒑𝒓𝒊𝒔𝒆 🎁</h1>
+     <p style="margin-top:10px;">𝙈𝙖𝙙𝙚 𝙬𝙞𝙩𝙝 𝙖 𝙡𝙞𝙩𝙩𝙡𝙚 𝙘𝙖𝙧𝙚… 𝙟𝙪𝙨𝙩 𝙛𝙤𝙧 𝙮𝙤𝙪 💖.</p>
     <div class="envelope" id="env">
         <div class="flap"></div>
-        <button class="open-btn" onclick="openEnvelope()">👉👈<br><strong>𝒄𝒍𝒊𝒄𝒌 𝒎𝒆!</strong></button>
+        <button class="open-btn" onclick="openEnvelope()">𝑻𝒂𝒑 𝑮𝒆𝒏𝒕𝒍𝒚 💌</button>
     </div>
 </div>
 
 <!-- SCREEN 2 -->
 <div class="screen" id="s2">
     <h1>😊<br>𝑯𝒆𝒚 𝑭𝒓𝒊𝒆𝒏𝒅</h1>
-    <h2>𝑵𝒆𝒘 𝒀𝒆𝒂𝒓 𝑮𝒊𝒇𝒕 𝒊𝒔 𝒘𝒂𝒊𝒕𝒊𝒏𝒈 <br> 𝒇𝒐𝒓 𝒚𝒐𝒖<br>𝒔𝒉𝒉𝒉...🤫 𝒔𝒆𝒄𝒓𝒆𝒕!!!</h2>
-    <button onclick="go(3)">𝑶𝑷𝑬𝑵</button>
+    <h2> 𝑻𝒉𝒊𝒔 𝒊𝒔𝒏’𝒕 𝒋𝒖𝒔𝒕 𝒂 𝒈𝒊𝒇𝒕, <br>
+        𝒊𝒕’𝒔 𝒂 𝒇𝒆𝒆𝒍𝒊𝒏𝒈 𝒚𝒐𝒖 𝒅𝒆𝒔𝒆𝒓𝒗𝒆 💫</h2>
+    <button onclick="go(3)">𝑶𝒑𝒆𝒏 𝒕𝒉𝒆 𝑴𝒂𝒈𝒊𝒄 ✨</button>
 </div>
 
 <!-- SCREEN 3 -->
 <div class="screen" id="s3">
-    <h1>💗 𝑻𝒂𝒑 𝒕𝒐 𝑹𝒆𝒗𝒆𝒂𝒍 💗</h1>
+    <h1> 💖 𝑻𝒂𝒑 𝑺𝒍𝒐𝒘𝒍𝒚💖 </h1>
 
     <div class="reveal">
         <div class="left">
@@ -214,7 +217,7 @@ input{
         <img src="nn.gif" class="rose-img">
     </div>
 
-    <button onclick="go(4)">𝑭𝒊𝒏𝒂𝒍𝒍𝒚 🎁</button>
+    <button onclick="go(4)">𝑶𝒏𝒆 𝑳𝒂𝒔𝒕 𝑻𝒉𝒊𝒏𝒈  🎁</button>
 </div>
 
 <!-- SCREEN 4 : ADDRESS -->
@@ -222,7 +225,7 @@ input{
     <h2>📮 𝑨𝒅𝒅𝒓𝒆𝒔𝒔 𝑬𝒏𝒗𝒆𝒍𝒐𝒑𝒆</h2>
     <div class="envelope-final">
         <div class="from">𝑭𝒓𝒐𝒎,<br>𝒀𝒐𝒖𝒓 𝑭𝒓𝒊𝒆𝒏𝒅 💖</div>
-        <div class="stamp">𝑺𝑻𝑨𝑴𝑷</div>
+        <div class="stamp">𝑳𝑶𝑽𝑬</div>
         <div class="to" id="toText"></div>
     </div>
 </div>
@@ -275,4 +278,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
