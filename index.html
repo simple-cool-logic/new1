@@ -100,50 +100,41 @@ input{
     max-width:900px;
     margin:auto;
     align-items:center;
+    flex-wrap:wrap;
 }
-.left{flex:1;text-align:left;}
+.left{
+    flex:1;
+    text-align:left;
+}
 
-/* FLIP ITEMS */
+/* TAP BLOCKS – MOBILE SAFE */
 .item{
-    perspective:1000px;
+    margin:12px 0;
     cursor:pointer;
-    margin:10px 0;
-}
-
-.card{
-    position:relative;
-    width:100%;
-    min-height:60px;
-    transform-style:preserve-3d;
-    transition:transform 0.8s;
-}
-
-.item.show .card{
-    transform:rotateY(180deg);
 }
 
 .front,
 .back{
-    position:absolute;
     width:100%;
-    backface-visibility:hidden;
     border-radius:10px;
-    padding:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding:14px;
     text-align:center;
-}
-
-.front{
     background:rgba(183,28,28,0.7);
     color:#ffdede;
 }
 
 .back{
+    display:none;
     background:#b71c1c;
     color:white;
-    transform:rotateY(180deg);
+}
+
+.item.show .front{
+    display:none;
+}
+
+.item.show .back{
+    display:block;
 }
 
 .rose-img{
@@ -225,7 +216,7 @@ input{
 <!-- SCREEN 1 -->
 <div class="screen" id="s1">
     <h1>🎁𝑨 𝑺𝒎𝒂𝒍𝒍 𝑺𝒖𝒓𝒑𝒓𝒊𝒔𝒆 🎁</h1>
-    <p style="margin-top:10px;">𝙈𝙖𝙙𝙚 𝙬𝙞𝙩𝙝 𝙖 𝙡𝙞𝙩𝙩𝙡𝙚 𝙘𝙖𝙧𝙚… 𝙟𝙪𝙨𝙩 𝙛𝙤𝙧 𝙮𝙤𝙪 💖.</p>
+    <p style="margin-top:10px;">𝙈𝙖𝙙𝙚 𝙬𝙞𝙩𝙝 𝙖 𝙡𝙞𝙩𝙡𝙚 𝙘𝙖𝙧𝙚… 𝙟𝙪𝙨𝙩 𝙛𝙤𝙧 𝙮𝙤𝒖 💖.</p>
     <div class="envelope" id="env">
         <div class="flap"></div>
         <button class="open-btn" onclick="openEnvelope()">𝑻𝒂𝒑 𝑮𝒆𝒏𝒕𝒍𝒚 💌</button>
@@ -250,40 +241,30 @@ input{
         <div class="left">
 
             <div class="item" onclick="this.classList.toggle('show')">
-                <div class="card">
-                    <div class="front">Tap ✨</div>
-                    <div class="back">✨𝒔𝒖𝒓𝒑𝒓𝒊𝒔𝒆✨</div>
+                <div class="front">Tap ✨</div>
+                <div class="back">✨𝒔𝒖𝒓𝒑𝒓𝒊𝒔𝒆✨</div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="front">Tap ✨</div>
+                <div class="back">✨𝑯𝒂𝒑𝒑𝒚 𝑵𝒆𝒘 𝒀𝒆𝒂𝒓✨</div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="front">Tap ✨</div>
+                <div class="back">
+                    🥳 𝑪𝒐𝒏𝒈𝒓𝒂𝒕𝒖𝒍𝒂𝒕𝒊𝒐𝒏𝒔!! 𝒀𝒐𝒖 𝒋𝒖𝒔𝒕 𝒓𝒆𝒔𝒖𝒃𝒔𝒄𝒓𝒊𝒃𝒆𝒅 𝒕𝒐 𝒐𝒖𝒓 𝒇𝒓𝒊𝒆𝒏𝒅𝒔𝒉𝒊𝒑 𝒇𝒐𝒓 2026.🥳
                 </div>
             </div>
 
             <div class="item" onclick="this.classList.toggle('show')">
-                <div class="card">
-                    <div class="front">Tap ✨</div>
-                    <div class="back">✨𝑯𝒂𝒑𝒑𝒚 𝑵𝒆𝒘 𝒀𝒆𝒂𝒓✨</div>
-                </div>
+                <div class="front">Tap ✨</div>
+                <div class="back">🫣𝑻𝒉𝒆𝒓'𝒔 𝒏𝒐 𝒘𝒂𝒚 𝒃𝒂𝒄𝒌🙂‍↔️</div>
             </div>
 
             <div class="item" onclick="this.classList.toggle('show')">
-                <div class="card">
-                    <div class="front">Tap ✨</div>
-                    <div class="back">
-                        🥳 𝑪𝒐𝒏𝒈𝒓𝒂𝒕𝒖𝒍𝒂𝒕𝒊𝒐𝒏𝒔!! 𝒀𝒐𝒖 𝒋𝒖𝒔𝒕 𝒓𝒆𝒔𝒖𝒃𝒔𝒄𝒓𝒊𝒃𝒆𝒅 𝒕𝒐 𝒐𝒖𝒓 𝒇𝒓𝒊𝒆𝒏𝒅𝒔𝒉𝒊𝒑 𝒇𝒐𝒓 2026.🥳
-                    </div>
-                </div>
-            </div>
-
-            <div class="item" onclick="this.classList.toggle('show')">
-                <div class="card">
-                    <div class="front">Tap ✨</div>
-                    <div class="back">🫣𝑻𝒉𝒆𝒓'𝒔 𝒏𝒐 𝒘𝒂𝒚 𝒃𝒂𝒄𝒌🙂‍↔️</div>
-                </div>
-            </div>
-
-            <div class="item" onclick="this.classList.toggle('show')">
-                <div class="card">
-                    <div class="front">Tap ✨</div>
-                    <div class="back">𝑫𝒐𝒏’𝒕 𝒘𝒐𝒓𝒓𝒚,😄𝑰’𝒎 𝒉𝒆𝒓𝒆 𝒕𝒐 𝒊𝒓𝒓𝒊𝒕𝒂𝒕𝒆 𝒚𝒐𝒖 😁😉</div>
-                </div>
+                <div class="front">Tap ✨</div>
+                <div class="back">𝑫𝒐𝒏’𝒕 𝒘𝒐𝒓𝒓𝒚,😄𝑰’𝒎 𝒉𝒆𝒓𝒆 𝒕𝒐 𝒊𝒓𝒓𝒊𝒕𝒂𝒕𝒆 𝒚𝒐𝒖 😁😉</div>
             </div>
 
         </div>
@@ -304,7 +285,7 @@ input{
 </div>
 
 <script>
-const music = document.getElementById("bgMusic");
+const music=document.getElementById("bgMusic");
 document.addEventListener("click",()=>{ if(music.paused) music.play(); },{once:true});
 
 let TO="";
@@ -318,7 +299,7 @@ function go(n){
 }
 
 function saveName(){
-    TO = toName.value.trim();
+    TO=toName.value.trim();
     if(!TO){ alert("Please enter your name"); return; }
     go(1);
 }
