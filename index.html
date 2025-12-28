@@ -60,19 +60,19 @@ input{
     border:1px solid #ccc;
 }
 
-/* ENVELOPE OPEN */
+/* ENVELOPE */
 .envelope{
     position:relative;
     width:300px;
     height:200px;
     margin:auto;
-     background:linear-gradient(135deg,#ef5350,#e53935,#b71c1c);
+    background:linear-gradient(135deg,#ef5350,#e53935,#b71c1c);
     overflow:hidden;
 }
 .flap{
     position:absolute;
     inset:0;
-   background:#c62828;
+    background:#c62828;
     clip-path:polygon(0 0,100% 0,50% 50%);
     transform-origin:top;
     transition:0.8s ease;
@@ -102,16 +102,54 @@ input{
     align-items:center;
 }
 .left{flex:1;text-align:left;}
+
+/* FLIP ITEMS */
 .item{
-   background:rgba(183,28,28,0.7);
-    padding:10px;
-    margin:8px 0;
-    border-radius:10px;
-    opacity:0.4;
+    perspective:1000px;
     cursor:pointer;
+    margin:10px 0;
 }
-.item.show{opacity:1;}
-.rose-img{width:260px; animation:fade 2s;}
+
+.card{
+    position:relative;
+    width:100%;
+    min-height:60px;
+    transform-style:preserve-3d;
+    transition:transform 0.8s;
+}
+
+.item.show .card{
+    transform:rotateY(180deg);
+}
+
+.front,
+.back{
+    position:absolute;
+    width:100%;
+    backface-visibility:hidden;
+    border-radius:10px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.front{
+    background:rgba(183,28,28,0.7);
+    color:#ffdede;
+}
+
+.back{
+    background:#b71c1c;
+    color:white;
+    transform:rotateY(180deg);
+}
+
+.rose-img{
+    width:260px;
+    animation:fade 2s;
+}
 @keyframes fade{
     from{opacity:0;transform:scale(0.8);}
     to{opacity:1;}
@@ -169,16 +207,16 @@ input{
 </head>
 
 <body>
+
 <audio id="bgMusic" autoplay loop>
     <source src="friend.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- SCREEN 0 : ASK TO NAME ONLY -->
+<!-- SCREEN 0 -->
 <div class="screen active" id="s0">
     <div class="form-box">
         <h2>✉️  𝑩𝒆𝒇𝒐𝒓𝒆 𝑾𝒆 𝑩𝒆𝒈𝒊𝒏</h2>
-         <p style="font-size:14px;margin-top:6px;">𝑻𝒆𝒍𝒍 𝒎𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆 💫</p>
+        <p style="font-size:14px;margin-top:6px;">𝑻𝒆𝒍𝒍 𝒎𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆 💫</p>
         <input id="toName" placeholder="To">
         <button onclick="saveName()">𝑪𝒐𝒏𝒕𝒊𝒏𝒖𝒆✨</button>
     </div>
@@ -187,7 +225,7 @@ input{
 <!-- SCREEN 1 -->
 <div class="screen" id="s1">
     <h1>🎁𝑨 𝑺𝒎𝒂𝒍𝒍 𝑺𝒖𝒓𝒑𝒓𝒊𝒔𝒆 🎁</h1>
-     <p style="margin-top:10px;">𝙈𝙖𝙙𝙚 𝙬𝙞𝙩𝙝 𝙖 𝙡𝙞𝙩𝙩𝙡𝙚 𝙘𝙖𝙧𝙚… 𝙟𝙪𝙨𝙩 𝙛𝙤𝙧 𝙮𝙤𝙪 💖.</p>
+    <p style="margin-top:10px;">𝙈𝙖𝙙𝙚 𝙬𝙞𝙩𝙝 𝙖 𝙡𝙞𝙩𝙩𝙡𝙚 𝙘𝙖𝙧𝙚… 𝙟𝙪𝙨𝙩 𝙛𝙤𝙧 𝙮𝙤𝙪 💖.</p>
     <div class="envelope" id="env">
         <div class="flap"></div>
         <button class="open-btn" onclick="openEnvelope()">𝑻𝒂𝒑 𝑮𝒆𝒏𝒕𝒍𝒚 💌</button>
@@ -197,8 +235,10 @@ input{
 <!-- SCREEN 2 -->
 <div class="screen" id="s2">
     <h1>😊<br>𝑯𝒆𝒚 𝑭𝒓𝒊𝒆𝒏𝒅</h1>
-    <h2> 𝑻𝒉𝒊𝒔 𝒊𝒔𝒏’𝒕 𝒋𝒖𝒔𝒕 𝒂 𝒈𝒊𝒇𝒕, <br>
-        𝒊𝒕’𝒔 𝒂 𝒇𝒆𝒆𝒍𝒊𝒏𝒈 𝒚𝒐𝒖 𝒅𝒆𝒔𝒆𝒓𝒗𝒆 💫</h2>
+    <h2>
+        𝑻𝒉𝒊𝒔 𝒊𝒔𝒏’𝒕 𝒋𝒖𝒔𝒕 𝒂 𝒈𝒊𝒇𝒕,<br>
+        𝒊𝒕’𝒔 𝒂 𝒇𝒆𝒆𝒍𝒊𝒏𝒈 𝒚𝒐𝒖 𝒅𝒆𝒔𝒆𝒓𝒗𝒆 💫
+    </h2>
     <button onclick="go(3)">𝑶𝒑𝒆𝒏 𝒕𝒉𝒆 𝑴𝒂𝒈𝒊𝒄 ✨</button>
 </div>
 
@@ -208,19 +248,52 @@ input{
 
     <div class="reveal">
         <div class="left">
-            <div class="item" onclick="this.classList.add('show')"><center>✨𝒔𝒖𝒓𝒑𝒓𝒊𝒔𝒆✨</center></div>
-            <div class="item" onclick="this.classList.add('show')"><center>✨𝑯𝒂𝒑𝒑𝒚 𝑵𝒆𝒘 𝒀𝒆𝒂𝒓✨</center></div>
-            <div class="item" onclick="this.classList.add('show')"><center>🥳 𝑪𝒐𝒏𝒈𝒓𝒂𝒕𝒖𝒍𝒂𝒕𝒊𝒐𝒏𝒔!! 𝒀𝒐𝒖 𝒋𝒖𝒔𝒕 𝒓𝒆𝒔𝒖𝒃𝒔𝒄𝒓𝒊𝒃𝒆𝒅 𝒕𝒐 𝒐𝒖𝒓 𝒇𝒓𝒊𝒆𝒏𝒅𝒔𝒉𝒊𝒑 𝒇𝒐𝒓 2026.🥳</center></div>
-            <div class="item" onclick="this.classList.add('show')"><center>🫣𝑻𝒉𝒆𝒓'𝒔 𝒏𝒐 𝒘𝒂𝒚 𝒃𝒂𝒄𝒌🙂‍↔️</center></div>
-            <div class="item" onclick="this.classList.add('show')"><center>𝑫𝒐𝒏’𝒕 𝒘𝒐𝒓𝒓𝒚,😄𝑰’𝒎 𝒉𝒆𝒓𝒆 𝒕𝒐 𝒊𝒓𝒓𝒊𝒕𝒂𝒕𝒆 𝒚𝒐𝒖 😁😉</center></div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="card">
+                    <div class="front">Tap ✨</div>
+                    <div class="back">✨𝒔𝒖𝒓𝒑𝒓𝒊𝒔𝒆✨</div>
+                </div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="card">
+                    <div class="front">Tap ✨</div>
+                    <div class="back">✨𝑯𝒂𝒑𝒑𝒚 𝑵𝒆𝒘 𝒀𝒆𝒂𝒓✨</div>
+                </div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="card">
+                    <div class="front">Tap ✨</div>
+                    <div class="back">
+                        🥳 𝑪𝒐𝒏𝒈𝒓𝒂𝒕𝒖𝒍𝒂𝒕𝒊𝒐𝒏𝒔!! 𝒀𝒐𝒖 𝒋𝒖𝒔𝒕 𝒓𝒆𝒔𝒖𝒃𝒔𝒄𝒓𝒊𝒃𝒆𝒅 𝒕𝒐 𝒐𝒖𝒓 𝒇𝒓𝒊𝒆𝒏𝒅𝒔𝒉𝒊𝒑 𝒇𝒐𝒓 2026.🥳
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="card">
+                    <div class="front">Tap ✨</div>
+                    <div class="back">🫣𝑻𝒉𝒆𝒓'𝒔 𝒏𝒐 𝒘𝒂𝒚 𝒃𝒂𝒄𝒌🙂‍↔️</div>
+                </div>
+            </div>
+
+            <div class="item" onclick="this.classList.toggle('show')">
+                <div class="card">
+                    <div class="front">Tap ✨</div>
+                    <div class="back">𝑫𝒐𝒏’𝒕 𝒘𝒐𝒓𝒓𝒚,😄𝑰’𝒎 𝒉𝒆𝒓𝒆 𝒕𝒐 𝒊𝒓𝒓𝒊𝒕𝒂𝒕𝒆 𝒚𝒐𝒖 😁😉</div>
+                </div>
+            </div>
+
         </div>
         <img src="nn.gif" class="rose-img">
     </div>
 
-    <button onclick="go(4)">𝑶𝒏𝒆 𝑳𝒂𝒔𝒕 𝑻𝒉𝒊𝒏𝒈  🎁</button>
+    <button onclick="go(4)">𝑶𝒏𝒆 𝑳𝒂𝒔𝒕 𝑻𝒉𝒊𝒏𝒈 🎁</button>
 </div>
 
-<!-- SCREEN 4 : ADDRESS -->
+<!-- SCREEN 4 -->
 <div class="screen" id="s4">
     <h2>📮 𝑨𝒅𝒅𝒓𝒆𝒔𝒔 𝑬𝒏𝒗𝒆𝒍𝒐𝒑𝒆</h2>
     <div class="envelope-final">
@@ -232,19 +305,13 @@ input{
 
 <script>
 const music = document.getElementById("bgMusic");
-
-document.addEventListener("click", () => {
-    if (music.paused) {
-        music.play();
-    }
-}, { once: true });
+document.addEventListener("click",()=>{ if(music.paused) music.play(); },{once:true});
 
 let TO="";
 
 function go(n){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById('s'+n).classList.add('active');
-
     if(n===4){
         document.getElementById("toText").innerHTML="To,<br>"+TO;
     }
@@ -252,10 +319,7 @@ function go(n){
 
 function saveName(){
     TO = toName.value.trim();
-    if(!TO){
-        alert("Please enter your name");
-        return;
-    }
+    if(!TO){ alert("Please enter your name"); return; }
     go(1);
 }
 
