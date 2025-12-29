@@ -164,8 +164,8 @@ input{
 /* Tom top-left peek */
 .tom{
     position:absolute;
-    top:0;
-    left:20px;
+    top:-10px;
+    left:-10px;
     width:180px;
 }
 
@@ -184,8 +184,8 @@ input{
 }
 .to{
     position:absolute;
-    bottom:60px;
-    left:50%;
+    bottom:20px;
+    left:60%;
     transform:translateX(-50%);
     text-align:center;
     font-weight:bold;
@@ -213,6 +213,46 @@ input{
 @keyframes fall{
     to{transform:translateY(110vh);opacity:0;}
 }
+/* Center soft animated message */
+.center-message{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:1;
+    opacity:1;
+    animation:softFloat 4s ease-in-out infinite;
+}
+
+/* Heart animation */
+.center-message .heart{
+    font-size:28px;
+    margin-bottom:6px;
+    animation:pulse 2s ease-in-out infinite;
+}
+
+/* Message text */
+.center-message .msg{
+    font-size:16px;
+    line-height:1.5;
+    color:#444;
+    font-weight:bold;
+}
+
+/* Soft floating effect */
+@keyframes softFloat{
+    0%{ transform:translate(-50%,-50%) translateY(1); }
+    50%{ transform:translate(-50%,-50%) translateY(-6px); }
+    100%{ transform:translate(-50%,-50%) translateY(1); }
+}
+
+/* Heart pulse */
+@keyframes pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
+}
+
 </style>
 </head>
 
@@ -302,6 +342,15 @@ input{
 
     <!-- Jerry -->
     <img src="jerry.png" class="jerry">
+    <div class="center-message">
+    <div class="heart">💌</div>
+    <div class="msg">
+        Happy New Year<br>
+        Wishing you smiles,<br>
+        peace & good vibes ✨
+    </div>
+</div>
+
 
         <div class="from"><u>𝑭𝒓𝒐𝒎,</u><br><u>𝒀𝒐𝒖𝒓 𝑭𝒓𝒊𝒆𝒏𝒅 💖</u></div>
         <div class="stamp"><u>𝑳𝑶𝑽𝑬</u></div>
