@@ -352,9 +352,9 @@ input{
 </div>
 
 
-        <div class="from"><u>𝑭𝒓𝒐𝒎,</u><br><u>𝒀𝒐𝒖𝒓 𝑭𝒓𝒊𝒆𝒏𝒅 💖</u></div>
+        <div class="from">𝑭𝒓𝒐𝒎,<br>𝒀𝒐𝒖𝒓 𝑭𝒓𝒊𝒆𝒏𝒅 💖</div>
         <div class="stamp"><u>𝑳𝑶𝑽𝑬</u></div>
-        <div class="to" id="toText"><u></u></div>
+        <div class="to" id="toText"></div>
     </div>
 </div>
 
@@ -389,7 +389,7 @@ setInterval(()=>{
     g.className="falling-gift";
     g.innerText="🎁";
     g.style.left=Math.random()*innerWidth+"px";
-    g.style.animationDuration=(Math.random()*6+8)+"s";
+    g.style.animationDuration=(Math.random()*6+4)+"s";
     document.body.appendChild(g);
     setTimeout(()=>g.remove(),5000);
 },300);
