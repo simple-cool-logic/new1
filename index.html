@@ -75,7 +75,7 @@ input{
     background:#c62828;
     clip-path:polygon(0 0,100% 0,50% 50%);
     transform-origin:top;
-    transition:1.0s;
+    transition:1s;
 }
 .envelope.open .flap{
     transform:rotateX(180deg);
@@ -93,52 +93,24 @@ input{
     z-index:2;
 }
 
-/* REVEAL */
-.reveal{
-    display:flex;
-    gap:20px;
-    max-width:900px;
-    margin:auto;
-    align-items:center;
-    flex-wrap:wrap;
-}
-.left{
-    flex:1;
-    text-align:left;
-}
-
-/* TAP BLOCKS – MOBILE SAFE */
+/* TAP BLOCKS */
 .item{
     margin:12px 0;
     cursor:pointer;
 }
-
-.front,
-.back{
+.front,.back{
     width:100%;
     border-radius:10px;
     padding:14px;
-    text-align:center;
     background:rgba(183,28,28,0.7);
-    color:#ffdede;
 }
-
 .back{
     display:none;
     background:#b71c1c;
     color:white;
 }
-
-.item.show .front{
-    display:none;
-}
-
-.item.show .back{
-    display:block;
-}
-.card{
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
+.item.show .front{display:none;}
+.item.show .back{display:block;}
 
 .rose-img{
     width:260px;
@@ -161,22 +133,18 @@ input{
     padding:20px;
     color:black;
 }
-/* Tom top-left peek */
 .tom{
     position:absolute;
     top:50px;
     left:20px;
     width:120px;
 }
-
-/* Jerry bottom-right peek */
 .jerry{
     position:absolute;
     bottom:10px;
     right:20px;
     width:100px;
 }
-
 .from{
     position:absolute;
     top:20px;
@@ -187,7 +155,6 @@ input{
     bottom:60px;
     left:50%;
     transform:translateX(-50%);
-    text-align:center;
     font-weight:bold;
 }
 .stamp{
@@ -203,54 +170,52 @@ input{
     color:red;
 }
 
-/* FALLING GIFTS */
-.falling-gift{
-    position:absolute;
-    top:-30px;
-    font-size:24px;
-    animation: fall linear infinite;
-}
-@keyframes fall{
-    to{transform:translateY(110vh);opacity:0;}
-}
-.card{
-    position:relative;
-    width:600px;
-    height:300px;
-    background:white;
-    border-radius:20px;
-    padding:20px;
-}
-/* Center soft animated message */
+/* Center message */
 .center-message{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
     text-align:center;
-    z-index:2;
-
-
 }
-
-/* Heart animation */
-.center-message .heart{
-    font-size:22px;
-    margin-bottom:6px;
-
-}
-
-/* Message text */
 .center-message .msg{
-    font-size:16px;
-    line-height:1.5;
     color:#444;
     font-weight:bold;
 }
-.main-text{
-    margin:15px 0;
+
+/* Seen confirmation */
+.seen-box{
+    margin-top:25px;
+    text-align:center;
+}
+.seen-btn{
+    display:inline-block;
+    padding:12px 26px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+/* FALLING GIFTS */
+.falling-gift{
+    position:absolute;
+    top:-30px;
+    font-size:24px;
+    pointer-events:none;
+    animation: fall linear infinite;
 }
 
+@keyframes fall{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
 </style>
 </head>
 
@@ -333,28 +298,23 @@ input{
 
 <!-- SCREEN 4 -->
 <div class="screen" id="s4">
-    <h2>📮 𝑨𝒅𝒅𝒓𝒆𝒔𝒔 𝑬𝒏𝒗𝒆𝒍𝒐𝒑𝒆</h2>
     <div class="envelope-final">
-     <!-- Tom -->
-    <img src="tom.png" class="tom">
+        <img src="tom.png" class="tom">
+        <img src="jerry.png" class="jerry">
 
-    <!-- Jerry -->
-    <img src="jerry.png" class="jerry">
-    <div class="center message">
-    <div class="heart"> 💌</div>
-    <div class="msg">
-        Happy New Year<br>
-        Wishing you smiles,<br>
-        peace & good vibes ✨
-    </div>
-</div>
-
+        <div class="center-message">
+            <div class="msg">
+                Happy New Year<br>
+                Wishing you smiles,<br>
+                peace & good vibes ✨
+            </div>
+        </div>
 
         <div class="from">𝑭𝒓𝒐𝒎,<br>𝒀𝒐𝒖𝒓 𝑭𝒓𝒊𝒆𝒏𝒅 💖</div>
-        <div class="stamp"><u>𝑳𝑶𝑽𝑬</u></div>
+        <div class="stamp">LOVE</div>
         <div class="to" id="toText"></div>
     </div>
-</div>
+
 
 <script>
 const music=document.getElementById("bgMusic");
@@ -380,17 +340,20 @@ function openEnvelope(){
     document.getElementById("env").classList.add("open");
     setTimeout(()=>go(2),900);
 }
-
-/* Falling gifts */
+/* Falling gifts animation */
 setInterval(()=>{
-    let g=document.createElement("div");
-    g.className="falling-gift";
-    g.innerText="🎁";
-    g.style.left=Math.random()*innerWidth+"px";
-    g.style.animationDuration=(Math.random()*6+4)+"s";
-    document.body.appendChild(g);
-    setTimeout(()=>g.remove(),5000);
-},300);
+    const gift = document.createElement("div");
+    gift.className = "falling-gift";
+    gift.innerText = "🎁";
+    gift.style.left = Math.random() * window.innerWidth + "px";
+    gift.style.animationDuration = (Math.random() * 5 + 4) + "s";
+    document.body.appendChild(gift);
+
+    setTimeout(()=>{
+        gift.remove();
+    },9000);
+},600);
+
 </script>
 
 </body>
